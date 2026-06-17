@@ -4,7 +4,7 @@ strength.py
 Offline password strength analysis.
 
 No network access is used here at all -- everything is computed locally
-using simple, well-known heuristics:
+using simple, well-known heuristics:7
   * Shannon-style entropy estimate based on character-set size
   * Rule based checks (length, character variety, repeats, common passwords)
 
