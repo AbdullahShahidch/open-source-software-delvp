@@ -15,12 +15,9 @@ Only standard library modules are used: tkinter, threading, queue.
 
 import queue
 import threading
-<<<<<<< HEAD
 import secrets
 import string
 import math
-=======
->>>>>>> 1a6b61645d33f0f72fb2b6e403c97ea7d064fefc
 import tkinter as tk
 from tkinter import ttk
 
@@ -52,7 +49,7 @@ class PasswordCheckerApp(tk.Tk):
     def __init__(self):
         super().__init__()
         self.title("Password Strength & Breach Checker")
-        self.resizable(False, False)
+        self.resizable(True, True)
         self.configure(padx=24, pady=20, bg="#fafafa")
 
         # Queue used to safely pass results from the background network
@@ -91,7 +88,6 @@ class PasswordCheckerApp(tk.Tk):
         )
         show_check.grid(row=1, column=2, sticky="w")
 
-<<<<<<< HEAD
         # --- Password generator controls (length + generate) ----------
         self.gen_length = tk.IntVar(value=16)
         tk.Label(self, text="Len:", bg="#fafafa", font=("Segoe UI", 9)).grid(
@@ -108,8 +104,6 @@ class PasswordCheckerApp(tk.Tk):
         )
         self.generate_button.grid(row=1, column=5, padx=(8, 0), sticky="w")
 
-=======
->>>>>>> 1a6b61645d33f0f72fb2b6e403c97ea7d064fefc
         # --- Strength meter -------------------------------------------
         tk.Label(self, text="Strength:", bg="#fafafa", font=("Segoe UI", 10)).grid(
             row=2, column=0, sticky="nw", pady=(14, 0)
@@ -133,7 +127,6 @@ class PasswordCheckerApp(tk.Tk):
         self.entropy_label = tk.Label(self, text="", bg="#fafafa", font=("Segoe UI", 9), fg="#555")
         self.entropy_label.grid(row=4, column=1, columnspan=2, sticky="w")
 
-<<<<<<< HEAD
         # Minimum requirement and max-possible entropy indicators
         self.min_req_label = tk.Label(self, text="", bg="#fafafa", font=("Segoe UI", 9, "italic"), fg="#555")
         self.min_req_label.grid(row=4, column=3, columnspan=3, sticky="w")
@@ -141,8 +134,6 @@ class PasswordCheckerApp(tk.Tk):
         self.max_possible_label = tk.Label(self, text="", bg="#fafafa", font=("Segoe UI", 9), fg="#555")
         self.max_possible_label.grid(row=4, column=0, columnspan=1, sticky="w")
 
-=======
->>>>>>> 1a6b61645d33f0f72fb2b6e403c97ea7d064fefc
         self.feedback_text = tk.Text(
             self, width=46, height=4, font=("Segoe UI", 9), wrap="word",
             bg="#fafafa", relief="flat", state="disabled",
@@ -157,7 +148,6 @@ class PasswordCheckerApp(tk.Tk):
             self, text="Check for Breaches (HaveIBeenPwned)",
             command=self._start_breach_check, font=("Segoe UI", 10),
         )
-<<<<<<< HEAD
         self.breach_button.grid(row=7, column=0, columnspan=2, sticky="w")
 
         self.copy_button = tk.Button(
@@ -171,15 +161,6 @@ class PasswordCheckerApp(tk.Tk):
             justify="left", relief="solid", bd=1, padx=8, pady=6,
         )
         self.breach_label.grid(row=8, column=0, columnspan=6, sticky="w", pady=(8, 0))
-=======
-        self.breach_button.grid(row=7, column=0, columnspan=3, sticky="w")
-
-        self.breach_label = tk.Label(
-            self, text="", bg="#fafafa", font=("Segoe UI", 10, "bold"), wraplength=420,
-            justify="left",
-        )
-        self.breach_label.grid(row=8, column=0, columnspan=3, sticky="w", pady=(8, 0))
->>>>>>> 1a6b61645d33f0f72fb2b6e403c97ea7d064fefc
 
         privacy_note = tk.Label(
             self,
@@ -195,7 +176,6 @@ class PasswordCheckerApp(tk.Tk):
     def _toggle_visibility(self):
         self.entry.config(show="" if self.show_var.get() else "*")
 
-<<<<<<< HEAD
     def _generate_password(self):
         """Generate a strong password and populate the entry."""
         length = max(8, min(256, int(self.gen_length.get())))
@@ -216,8 +196,6 @@ class PasswordCheckerApp(tk.Tk):
         except Exception:
             self.breach_label.config(text="Could not copy to clipboard.", fg="#d93025")
 
-=======
->>>>>>> 1a6b61645d33f0f72fb2b6e403c97ea7d064fefc
     def _on_password_change(self, *_args):
         password = self.password_var.get()
         result = check_strength(password)
@@ -235,7 +213,6 @@ class PasswordCheckerApp(tk.Tk):
         self.strength_label.config(text=f"{result['label']}  ({score}/100)", fg=color)
         self.entropy_label.config(text=f"Estimated entropy: {result['entropy']} bits")
 
-<<<<<<< HEAD
         # Minimum requirement checks (length >=12, has lower/upper/digit/symbol)
         pw = self.password_var.get()
         unmet = []
@@ -264,8 +241,6 @@ class PasswordCheckerApp(tk.Tk):
         else:
             self.max_possible_label.config(text="")
 
-=======
->>>>>>> 1a6b61645d33f0f72fb2b6e403c97ea7d064fefc
         self.feedback_text.config(state="normal")
         self.feedback_text.delete("1.0", "end")
         self.feedback_text.insert("1.0", "\n".join(f"- {f}" for f in result["feedback"]))
